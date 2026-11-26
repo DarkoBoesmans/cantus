@@ -50,11 +50,12 @@
       <p id="verhaal"></p>
       <p class="adres" id="adres"></p>
     </div>
-    <div class="qr"><div class="vak"><img src="qr.svg" alt="QR-code naar de online drankenkaart"></div><p>SCAN &amp; TAP</p></div>
+    <div class="qr"><div class="vak"><img src="qr.svg" alt="QR-code naar de online drankenkaart"></div><p>SCAN DE KAART</p></div>
   </div>
 </div>
 <script src="menu.js"></script>
 <script>
+  if (new URLSearchParams(location.search).get("qr") === "0") document.querySelector(".qr").remove();
   var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["dag", "vat", "pils", "wit", "blond"], rechts = ["fruit", "sterk", "trappist", "donker", "muts"];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   var volgorde = links.concat(rechts);

@@ -13,5 +13,5 @@ Type: Roboto Slab (uithangbord, rubrieken), EB Garamond (biernamen), Gelasio cur
 Dubbele kader rond het blad en het scherm, dubbele lijn onder het uithangbord, stippellijn tussen naam en prijs.
 
 ## Web
-Eén moment: de tap-knop vult zich van onder en het glas in de bestelbalk loopt vol bij elke bestelling.
-Geen beweging bij reduced motion. Print en web delen `styles.css` en `menu.js`.
+Alleen info, geen bestellen: per bier naam, prijs (bladzijde) en een kort grapje. Sticky rubriekenbalk.
+Print en web delen `styles.css` en `menu.js`.

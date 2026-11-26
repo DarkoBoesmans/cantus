@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Drankenkaart | Brouwerij Vopop</title>
-<meta name="description" content="De drankenkaart van Brouwerij Vopop: kies een Belgisch bier, bestel het en zing het chiroliedje dat erbij hoort.">
+<meta name="description" content="De drankenkaart van Brouwerij Vopop: elk chiroliedje gekoppeld aan een Belgisch bier, de prijs is de bladzijde in het zangboekje.">
 <meta name="theme-color" content="#F6EFDB">
 <link rel="canonical" href="https://darkoboesmans.github.io/cantus/">
 <meta property="og:title" content="Drankenkaart | Brouwerij Vopop">
-<meta property="og:description" content="Kies een bier, bestel het en zing het lied dat erbij hoort.">
+<meta property="og:description" content="Elk chiroliedje gekoppeld aan een Belgisch bier.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://darkoboesmans.github.io/cantus/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 fill=%22%2300124D%22/%3E%3Ctext x=%2216%22 y=%2224%22 font-size=%2222%22 font-family=%22Georgia%22 font-weight=%22bold%22 fill=%22%23F6EFDB%22 text-anchor=%22middle%22%3EV%3C/text%3E%3C/svg%3E">
@@ -51,64 +51,12 @@
   .bier { padding: 12px 0 13px; border-bottom: 1px dotted rgba(0,18,77,.35); }
   .bier h3 { margin: 0; font-size: 1em; line-height: 1.2; }
   .bier .prijs { font-size: 19px; }
-  .onder { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 5px; }
-  .uitleg { font-family: var(--cursief); font-style: italic; margin: 0; font-size: 15.5px; line-height: 1.4; }
+  .uitleg { font-family: var(--cursief); font-style: italic; margin: 4px 0 0; font-size: 15.5px; line-height: 1.4; }
 
-  /* Tap-knop: vult zich van onder zoals een glas */
-  .tap {
-    position: relative; overflow: hidden; flex: none; display: inline-flex; align-items: center; gap: 7px;
-    background: transparent; border: 2px solid var(--navy); color: var(--navy); min-height: 40px;
-    font-family: var(--slab); font-weight: 700; font-size: 14px; letter-spacing: .12em; text-transform: uppercase; padding: 6px 14px 5px;
-  }
-  .tap::before { content: ""; position: absolute; inset: 0; background: var(--rood); transform: scaleY(0); transform-origin: bottom; transition: transform .32s cubic-bezier(.3,.7,.2,1); }
-  .tap > * { position: relative; }
-  .tap:hover::before, .tap:focus-visible::before, .tap.vol::before { transform: scaleY(1); }
-  .tap:hover, .tap:focus-visible, .tap.vol { color: #fff; border-color: var(--rood); }
-  .tap:active { translate: 0 2px; }
-  .tap .n { background: #fff; color: var(--rood); min-width: 22px; text-align: center; padding: 0 5px; letter-spacing: 0; }
-
-  footer { padding: 40px 0 150px; text-align: center; font-family: var(--caps); font-weight: 600; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
+  footer { padding: 40px 0 60px; text-align: center; font-family: var(--caps); font-weight: 600; font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
   footer .dubbel { margin-bottom: 18px; }
   footer p { margin: 3px 0; }
   footer a { text-underline-offset: 3px; }
-
-  .balk { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 0 16px calc(16px + env(safe-area-inset-bottom)); transform: translateY(130%); transition: transform .35s cubic-bezier(.3,.7,.2,1); }
-  .balk.toon { transform: none; }
-  .balk button {
-    display: flex; align-items: center; gap: 14px; width: 100%; max-width: 588px; margin: 0 auto; text-align: left;
-    background: var(--navy); color: #fff; border: 0; padding: 10px 18px 10px 14px; font-family: var(--slab); font-weight: 700; font-size: 16px; letter-spacing: .08em; text-transform: uppercase;
-  }
-  .balk button:hover .glas, .balk button:focus-visible .glas { rotate: -8deg; }
-  .balk .tekst { flex: 1; }
-  .balk .totaal { font-family: var(--caps); font-size: 20px; letter-spacing: .02em; color: var(--beige); }
-  .glas { position: relative; width: 30px; height: 42px; flex: none; transition: rotate .3s ease; }
-  .glas svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .glas .bier-vul { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(0); transition: transform .6s cubic-bezier(.3,.7,.2,1); }
-  .glas .bubbel { fill: #fff; animation: stijg 2.6s linear infinite; }
-  .glas .bubbel:nth-of-type(2) { animation-delay: -1.3s; }
-  @keyframes stijg { from { transform: translateY(0); opacity: 0; } 20% { opacity: .8; } to { transform: translateY(-22px); opacity: 0; } }
-
-  dialog { border: 0; padding: 0; width: 100%; max-width: 620px; max-height: 88vh; margin: auto auto 0; background: var(--papier); color: var(--navy); border-top: 5px solid var(--rood); }
-  dialog::backdrop { background: rgba(0,18,77,.55); }
-  .blad { padding: 22px 20px calc(20px + env(safe-area-inset-bottom)); }
-  .blad h2 { font-family: var(--slab); font-weight: 900; font-size: 32px; margin: 0 0 4px; }
-  .blad .sub { font-family: var(--cursief); font-style: italic; margin: 0 0 10px; font-size: 16px; color: var(--rood-donker); }
-  .regel { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dotted rgba(0,18,77,.35); }
-  .regel .naam { font-size: 20px; }
-  .regel .prijs { font-size: 16px; display: block; }
-  .aantal { display: flex; align-items: center; gap: 6px; }
-  .aantal button { width: 40px; height: 40px; border: 2px solid var(--navy); background: transparent; font-family: var(--caps); font-weight: 700; font-size: 22px; line-height: 1; }
-  .aantal button:hover { background: var(--navy); color: #fff; }
-  .aantal output { min-width: 24px; text-align: center; font-family: var(--caps); font-weight: 700; font-size: 20px; }
-  .som { display: flex; justify-content: space-between; font-family: var(--slab); font-weight: 700; font-size: 18px; letter-spacing: .06em; text-transform: uppercase; padding: 14px 0 4px; }
-  .som span:last-child { font-family: var(--caps); font-size: 22px; letter-spacing: 0; }
-  .knoppen { display: flex; gap: 10px; margin-top: 14px; }
-  .knoppen .tap { flex: 1; justify-content: center; min-height: 50px; }
-  .knoppen .hoofd { background: var(--rood); color: #fff; border-color: var(--rood); }
-  .knoppen .hoofd::before { background: var(--navy); }
-  ol.zing { padding-left: 24px; margin: 4px 0 0; font-size: 20px; }
-  ol.zing li { margin: 8px 0; font-weight: 600; }
-  ol.zing small { display: block; font-family: var(--caps); font-weight: 600; font-size: 15px; letter-spacing: .04em; color: rgba(0,18,77,.75); }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { transition: none !important; animation: none !important; }
@@ -140,43 +88,19 @@
 <footer class="wrap">
   <div class="dubbel"></div>
   <p id="adres"></p>
-  <p><a href="menu.pdf">Drankenkaart als PDF</a></p>
+  <p><a href="menu.pdf">Drankenkaart als PDF</a> · <a href="menu-zonder-qr.pdf">zonder QR-code</a></p>
 </footer>
-
-<div class="balk" id="balk">
-  <button type="button" id="open">
-    <span class="glas" aria-hidden="true">
-      <svg viewBox="0 0 30 42">
-        <defs><clipPath id="binnen"><path d="M4 6h22l-2.4 33H6.4z"/></clipPath></defs>
-        <g clip-path="url(#binnen)">
-          <rect class="bier-vul" id="vul" x="0" y="6" width="30" height="36" fill="#E4D096"/>
-          <circle class="bubbel" cx="12" cy="36" r="1.4"/><circle class="bubbel" cx="18" cy="38" r="1.1"/>
-        </g>
-        <path d="M4 6h22l-2.4 33H6.4z" fill="none" stroke="#fff" stroke-width="2"/>
-      </svg>
-    </span>
-    <span class="tekst" id="balkTekst">Bestelling</span><span class="totaal" id="balkTotaal"></span>
-  </button>
-</div>
-
-<dialog id="bestelling" aria-labelledby="bestelTitel"><div class="blad" id="blad"></div></dialog>
 
 <script src="menu.js"></script>
 <script>
 (function () {
   var M = window.VOPOP, $ = function (id) { return document.getElementById(id); };
-  var alle = {}; M.rubrieken.forEach(function (r) { r.bieren.forEach(function (b, i) { b.id = r.id + i; alle[b.id] = b; }); });
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  function euro(n) { return "€ " + n.toFixed(2).replace(".", ","); }
 
   var tafel = new URLSearchParams(location.search).get("tafel");
   if (tafel) $("tafel").innerHTML = '<span class="tafel">TAFEL ' + String(tafel).replace(/[^0-9a-zA-Z]/g, "").slice(0, 4) + "</span>";
   $("verhaal").textContent = M.verhaal;
   $("adres").textContent = "@chiropopov · " + M.adres;
-
-  var mand = {};
-  try { mand = JSON.parse(localStorage.getItem("vopop-mand") || "{}") || {}; } catch (e) { mand = {}; }
-  function bewaar() { try { localStorage.setItem("vopop-mand", JSON.stringify(mand)); } catch (e) {} }
 
   var volgorde = ["dag", "vat", "pils", "wit", "blond", "fruit", "sterk", "trappist", "donker", "muts"];
   var nav = "", kaart = "";
@@ -187,63 +111,11 @@
     r.bieren.forEach(function (b) {
       kaart += '<article class="bier"><div class="lijn"><h3 class="naam">' + esc(b.bier) + '</h3><span class="punten" aria-hidden="true"></span>' +
         '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>" +
-        '<div class="onder"><p class="uitleg">' + esc(b.uitleg) + "</p>" +
-        '<button type="button" class="tap" data-id="' + b.id + '" aria-label="Tap een ' + esc(b.bier) + '"><span>Tap</span></button></div></article>';
+        '<p class="uitleg">' + esc(b.uitleg) + "</p></article>";
     });
     kaart += "</section>";
   });
   $("nav").innerHTML = nav; $("kaart").innerHTML = kaart;
-
-  function teken() {
-    var stuks = 0, totaal = 0;
-    Object.keys(mand).forEach(function (id) { if (!alle[id] || !(mand[id] > 0)) { delete mand[id]; return; } stuks += mand[id]; totaal += mand[id] * (typeof alle[id].prijs === "number" ? alle[id].prijs : 0); });
-    document.querySelectorAll(".tap[data-id]").forEach(function (k) {
-      var n = mand[k.dataset.id] || 0;
-      k.classList.toggle("vol", n > 0);
-      k.innerHTML = n ? '<span>Tap</span><span class="n">' + n + "</span>" : "<span>Tap</span>";
-    });
-    $("balk").classList.toggle("toon", stuks > 0);
-    $("balkTekst").textContent = "Bestelling (" + stuks + ")";
-    $("balkTotaal").textContent = euro(totaal);
-    $("vul").style.transform = "scaleY(" + Math.min(1, .15 + stuks * .12) + ")";
-    bewaar();
-    return { stuks: stuks, totaal: totaal };
-  }
-  document.addEventListener("click", function (e) {
-    var k = e.target.closest(".tap[data-id]"); if (!k) return;
-    mand[k.dataset.id] = (mand[k.dataset.id] || 0) + 1; teken();
-  });
-
-  var dlg = $("bestelling");
-  function toonBestelling() {
-    var t = teken(), html = '<h2 id="bestelTitel">Je bestelling</h2><p class="sub">Elke prijs is een bladzijde in het zangboekje.</p>';
-    Object.keys(mand).forEach(function (id) {
-      var b = alle[id];
-      html += '<div class="regel"><div><div class="naam">' + esc(b.bier) + '</div><span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>" +
-        '<div class="aantal"><button type="button" data-min="' + id + '" aria-label="Eén ' + esc(b.bier) + ' minder">−</button><output>' + mand[id] + '</output><button type="button" data-meer="' + id + '" aria-label="Eén ' + esc(b.bier) + ' meer">+</button></div></div>';
-    });
-    html += '<div class="som"><span>Totaal</span><span>' + euro(t.totaal) + "</span></div>" +
-      '<div class="knoppen"><button type="button" class="tap" data-sluit><span>Verder kiezen</span></button><button type="button" class="tap hoofd" data-plaats><span>Bestelling plaatsen</span></button></div>';
-    $("blad").innerHTML = html;
-  }
-  function toonBevestiging() {
-    var html = '<h2 id="bestelTitel">Getapt!</h2><p class="sub">De cafébazen schenken in. Zing je bestelling in deze volgorde:</p><ol class="zing">';
-    Object.keys(mand).forEach(function (id) {
-      var b = alle[id];
-      html += "<li>" + esc(b.lied) + (mand[id] > 1 ? " × " + mand[id] : "") + "<small>" + esc(b.bier) + (typeof b.prijs === "number" ? ", bladzijde " + b.prijs : "") + "</small></li>";
-    });
-    html += '</ol><div class="knoppen"><button type="button" class="tap hoofd" data-nieuw><span>Nieuwe bestelling</span></button></div>';
-    $("blad").innerHTML = html;
-  }
-  $("open").addEventListener("click", function () { toonBestelling(); dlg.showModal(); });
-  dlg.addEventListener("click", function (e) {
-    var t = e.target.closest("button") || e.target;
-    if (e.target === dlg || t.hasAttribute("data-sluit")) { dlg.close(); return; }
-    if (t.dataset.min) { mand[t.dataset.min]--; if (!(mand[t.dataset.min] > 0)) delete mand[t.dataset.min]; if (Object.keys(mand).length) toonBestelling(); else { teken(); dlg.close(); } return; }
-    if (t.dataset.meer) { mand[t.dataset.meer]++; toonBestelling(); return; }
-    if (t.hasAttribute("data-plaats")) { toonBevestiging(); return; }
-    if (t.hasAttribute("data-nieuw")) { mand = {}; teken(); dlg.close(); }
-  });
 
   var links = document.querySelectorAll("nav a");
   if ("IntersectionObserver" in window) {
@@ -259,7 +131,6 @@
     }, { rootMargin: "-80px 0px -70% 0px" });
     document.querySelectorAll("section.rubriek").forEach(function (s) { io.observe(s); });
   }
-  teken();
 })();
 </script>
 </body>
