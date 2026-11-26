@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>Brouwerij Vopop · Drankenkaart (A4)</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: #555; font-family: var(--serif); color: var(--cream); }
+  .blad {
+    width: 210mm; height: 297mm; margin: 0 auto; background: var(--navy); position: relative; overflow: hidden;
+    padding: 12mm 16mm 0;
+  }
+  .kader { position: absolute; inset: 6mm; border: 1.3mm solid var(--beige); pointer-events: none; }
+  .kader::after { content: ""; position: absolute; inset: 1.6mm; border: .3mm solid var(--beige); }
+
+  header { text-align: center; }
+  .klein { font-family: var(--cond); font-weight: 600; font-size: 9.5pt; letter-spacing: .3em; color: var(--red); margin: 0; }
+  .brouwerij { font-style: italic; font-size: 22pt; color: var(--beige); line-height: 1; margin: 1.5mm 0 0; }
+  h1 { font-family: var(--slab); font-weight: 900; font-size: 80pt; line-height: .9; letter-spacing: .04em; margin: 0; color: var(--cream); }
+  .lint { position: relative; display: inline-block; margin-top: 3mm; }
+  .lint span { position: relative; z-index: 1; display: block; background: var(--red); color: #fff; font-family: var(--slab); font-weight: 700; font-size: 14pt; letter-spacing: .14em; padding: 1.8mm 9mm 1.6mm 10mm; }
+  .lint::before, .lint::after { content: ""; position: absolute; top: 2.2mm; width: 12mm; height: 100%; background: var(--red-dark); }
+  .lint::before { left: -8mm; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 3.5mm 50%); }
+  .lint::after { right: -8mm; clip-path: polygon(0 0, 100% 0, calc(100% - 3.5mm) 50%, 100% 100%, 0 100%); }
+  .onderkop { display: flex; justify-content: space-between; align-items: baseline; margin-top: 2.5mm; }
+  .onderkop .open { font-family: var(--cond); font-weight: 600; font-size: 9pt; letter-spacing: .15em; color: var(--beige); width: 40mm; text-align: left; }
+  .onderkop .slogan { font-style: italic; font-size: 17pt; color: var(--beige); }
+  .onderkop .leeg { width: 40mm; }
+  .regel2 { border-top: .6mm solid var(--beige); margin-top: 3mm; height: 1.4mm; border-bottom: .2mm solid var(--beige); }
+
+  .kaart { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 4mm; align-items: start; }
+  section { margin-bottom: 3.3mm; }
+  h2 { font-family: var(--slab); font-weight: 700; color: var(--red); font-size: 11.5pt; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 .8mm; padding-bottom: .8mm; border-bottom: .25mm solid var(--beige); }
+  .bier { display: flex; align-items: baseline; gap: 1.5mm; line-height: 1.22; padding: .55mm 0; }
+  .naam { font-weight: 600; font-size: 11.2pt; }
+  .punten { flex: 1; border-bottom: .5mm dotted rgba(246,239,219,.55); transform: translateY(-1.1mm); min-width: 4mm; }
+  .prijs { font-family: var(--cond); font-weight: 600; font-size: 11pt; white-space: nowrap; }
+  .prijs.raar { color: var(--red); }
+
+  .voet { position: absolute; left: 16mm; right: 16mm; bottom: 12mm; display: flex; gap: 6mm; align-items: stretch; }
+  .verhaal { flex: 1; background: var(--beige); color: var(--navy); padding: 3.5mm 4.5mm; text-align: left; }
+  .verhaal h3 { font-style: italic; font-weight: 600; color: var(--red-dark); font-size: 12.5pt; margin: 0 0 1mm; }
+  .verhaal p { margin: 0; font-size: 10.2pt; line-height: 1.32; }
+  .verhaal .adres { font-family: var(--cond); font-weight: 600; letter-spacing: .1em; font-size: 8.5pt; margin-top: 2mm; }
+  .qr { width: 34mm; background: var(--cream); color: var(--navy); text-align: center; padding: 3mm 3mm 2mm; }
+  .qr img { width: 28mm; height: 28mm; display: block; margin: 0 auto; }
+  .qr p { font-family: var(--cond); font-weight: 700; font-size: 10.5pt; letter-spacing: .06em; margin: 1.5mm 0 0; }
+</style>
+</head>
+<body>
+<div class="blad">
+  <div class="kader"></div>
+  <header>
+    <p class="klein">CAFÉ &amp; BROUWERIJ GIJZEGEM</p>
+    <p class="brouwerij">Brouwerij</p>
+    <h1>VOPOP</h1>
+    <div class="lint"><span>DRANKENKAART</span></div>
+    <div class="onderkop"><span class="open">ZONDAG (MEESTAL) OPEN</span><span class="slogan">met één P</span><span class="leeg"></span></div>
+    <div class="regel2"></div>
+  </header>
+  <main class="kaart"><div id="links"></div><div id="rechts"></div></main>
+  <div class="voet">
+    <div class="verhaal">
+      <h3>Een woordje van de cafébazen</h3>
+      <p id="verhaal"></p>
+      <p class="adres">@CHIROPOPOV · <span id="adres"></span></p>
+    </div>
+    <div class="qr"><img src="qr.svg" alt="QR-code naar de online drankenkaart"><p>SCAN &amp; BESTEL</p></div>
+  </div>
+</div>
+<script src="menu.js"></script>
+<script>
+  var M = window.VOPOP, kol = { links: "", rechts: "" };
+  var links = ["vat", "dag", "pils", "wit", "blond"];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  M.rubrieken.forEach(function (r) {
+    var h = "<section><h2>" + esc(r.naam) + "</h2>";
+    r.bieren.forEach(function (b) {
+      h += '<div class="bier"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
+           '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>";
+    });
+    kol[links.indexOf(r.id) >= 0 ? "links" : "rechts"] += h + "</section>";
+  });
+  document.getElementById("links").innerHTML = kol.links;
+  document.getElementById("rechts").innerHTML = kol.rechts;
+  document.getElementById("verhaal").textContent = M.verhaal;
+  document.getElementById("adres").textContent = M.adres.toUpperCase();
+</script>
+</body>
+</html>
