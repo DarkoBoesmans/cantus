@@ -2,92 +2,88 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<title>Brouwerij Vopop · Drankenkaart (A4)</title>
-<link rel="stylesheet" href="fonts.css">
+<title>Drankenkaart A4 | Brouwerij Vopop</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="styles.css">
 <style>
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
   html, body { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #555; font-family: var(--serif); color: var(--cream); }
-  .blad {
-    width: 210mm; height: 297mm; margin: 0 auto; background: var(--navy); position: relative; overflow: hidden;
-    padding: 12mm 16mm 0;
-  }
-  .kader { position: absolute; inset: 6mm; border: 1.3mm solid var(--beige); pointer-events: none; }
-  .kader::after { content: ""; position: absolute; inset: 1.6mm; border: .3mm solid var(--beige); }
+  body { background: #ccc; font-family: var(--tekst); color: var(--navy); }
+  .blad { width: 210mm; height: 297mm; margin: 0 auto; background: var(--wit); position: relative; overflow: hidden; padding: 11mm 14mm 0; }
 
-  header { text-align: center; }
-  .klein { font-family: var(--cond); font-weight: 600; font-size: 9.5pt; letter-spacing: .3em; color: var(--red); margin: 0; }
-  .brouwerij { font-style: italic; font-size: 22pt; color: var(--beige); line-height: 1; margin: 1.5mm 0 0; }
-  h1 { font-family: var(--slab); font-weight: 900; font-size: 80pt; line-height: .9; letter-spacing: .04em; margin: 0; color: var(--cream); }
-  .lint { position: relative; display: inline-block; margin-top: 3mm; }
-  .lint span { position: relative; z-index: 1; display: block; background: var(--red); color: #fff; font-family: var(--slab); font-weight: 700; font-size: 14pt; letter-spacing: .14em; padding: 1.8mm 9mm 1.6mm 10mm; }
-  .lint::before, .lint::after { content: ""; position: absolute; top: 2.2mm; width: 12mm; height: 100%; background: var(--red-dark); }
-  .lint::before { left: -8mm; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 3.5mm 50%); }
-  .lint::after { right: -8mm; clip-path: polygon(0 0, 100% 0, calc(100% - 3.5mm) 50%, 100% 100%, 0 100%); }
-  .onderkop { display: flex; justify-content: space-between; align-items: baseline; margin-top: 2.5mm; }
-  .onderkop .open { font-family: var(--cond); font-weight: 600; font-size: 9pt; letter-spacing: .15em; color: var(--beige); width: 40mm; text-align: left; }
-  .onderkop .slogan { font-style: italic; font-size: 17pt; color: var(--beige); }
-  .onderkop .leeg { width: 40mm; }
-  .regel2 { border-top: .6mm solid var(--beige); margin-top: 3mm; height: 1.4mm; border-bottom: .2mm solid var(--beige); }
+  .top { display: flex; justify-content: space-between; font-family: var(--cond); font-weight: 600; font-size: 9pt; letter-spacing: .12em; text-transform: uppercase; }
+  .kop { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6mm; margin-top: 4mm; }
+  .voor { font-family: var(--cond); font-weight: 700; font-size: 15pt; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 1.5mm; }
+  h1.bord { font-size: 96pt; margin-left: -.6mm; }
+  .rechts { padding-bottom: 3mm; text-align: right; }
+  .rechts .lint { font-size: 12pt; margin-right: 9mm; }
+  .rechts .lint > span { padding: 2.2mm 6mm 2mm; }
+  .slogan { font-family: var(--cond); font-weight: 600; font-size: 13pt; margin: 5mm 0 0; }
+  .slogan b { color: var(--rood); }
+  .streep { height: .8mm; background: var(--navy); margin-top: 4mm; }
 
-  .kaart { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 4mm; align-items: start; }
-  section { margin-bottom: 3.3mm; }
-  h2 { font-family: var(--slab); font-weight: 700; color: var(--red); font-size: 11.5pt; letter-spacing: .06em; text-transform: uppercase; margin: 0 0 .8mm; padding-bottom: .8mm; border-bottom: .25mm solid var(--beige); }
-  .bier { display: flex; align-items: baseline; gap: 1.5mm; line-height: 1.22; padding: .55mm 0; }
-  .naam { font-weight: 600; font-size: 11.2pt; }
-  .punten { flex: 1; border-bottom: .5mm dotted rgba(246,239,219,.55); transform: translateY(-1.1mm); min-width: 4mm; }
-  .prijs { font-family: var(--cond); font-weight: 600; font-size: 11pt; white-space: nowrap; }
-  .prijs.raar { color: var(--red); }
+  .kaart { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; margin-top: 5mm; align-items: start; }
+  section { margin-bottom: 3.6mm; }
+  .rub { display: flex; align-items: center; gap: 2.2mm; padding-bottom: 1.2mm; border-bottom: .5mm solid var(--navy); margin-bottom: .6mm; }
+  .rub .tegel { width: 7mm; height: 7mm; }
+  .rub h2 { font-size: 17pt; }
+  .bier { padding: .5mm 0; }
+  .bier .naam { font-size: 12pt; }
+  .bier .prijs { font-size: 12pt; }
+  .bier .lied { font-size: 8.5pt; color: rgba(0,18,77,.7); margin-top: -.6mm; }
 
-  .voet { position: absolute; left: 16mm; right: 16mm; bottom: 12mm; display: flex; gap: 6mm; align-items: stretch; }
-  .verhaal { flex: 1; background: var(--beige); color: var(--navy); padding: 3.5mm 4.5mm; text-align: left; }
-  .verhaal h3 { font-style: italic; font-weight: 600; color: var(--red-dark); font-size: 12.5pt; margin: 0 0 1mm; }
-  .verhaal p { margin: 0; font-size: 10.2pt; line-height: 1.32; }
-  .verhaal .adres { font-family: var(--cond); font-weight: 600; letter-spacing: .1em; font-size: 8.5pt; margin-top: 2mm; }
-  .qr { width: 34mm; background: var(--cream); color: var(--navy); text-align: center; padding: 3mm 3mm 2mm; }
-  .qr img { width: 28mm; height: 28mm; display: block; margin: 0 auto; }
-  .qr p { font-family: var(--cond); font-weight: 700; font-size: 10.5pt; letter-spacing: .06em; margin: 1.5mm 0 0; }
+  .voet { position: absolute; left: 14mm; right: 14mm; bottom: 11mm; display: flex; gap: 5mm; align-items: stretch; }
+  .verhaal { flex: 1; background: var(--schuim); padding: 4mm 5mm; }
+  .verhaal h3 { font-family: var(--cond); font-weight: 700; font-size: 12pt; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 1mm; }
+  .verhaal p { margin: 0; font-size: 9.6pt; line-height: 1.4; }
+  .verhaal .adres { font-family: var(--cond); font-weight: 600; letter-spacing: .1em; font-size: 8.5pt; text-transform: uppercase; margin-top: 2mm; }
+  .qr { width: 36mm; background: var(--navy); color: #fff; text-align: center; padding: 3mm 3mm 2.2mm; }
+  .qr .vak { background: #fff; padding: 1.6mm; }
+  .qr img { width: 100%; display: block; }
+  .qr p { font-family: var(--cond); font-weight: 700; font-size: 11pt; letter-spacing: .08em; margin: 1.8mm 0 0; text-transform: uppercase; }
 </style>
 </head>
 <body>
 <div class="blad">
-  <div class="kader"></div>
-  <header>
-    <p class="klein">CAFÉ &amp; BROUWERIJ GIJZEGEM</p>
-    <p class="brouwerij">Brouwerij</p>
-    <h1>VOPOP</h1>
-    <div class="lint"><span>DRANKENKAART</span></div>
-    <div class="onderkop"><span class="open">ZONDAG (MEESTAL) OPEN</span><span class="slogan">met één P</span><span class="leeg"></span></div>
-    <div class="regel2"></div>
-  </header>
+  <div class="top"><span>Café &amp; brouwerij, Gijzegem</span><span>@chiropopov</span></div>
+  <div class="kop">
+    <div>
+      <p class="voor">Brouwerij</p>
+      <h1 class="bord">Vopop</h1>
+    </div>
+    <div class="rechts">
+      <div class="lint"><span>Drankenkaart</span></div>
+      <p class="slogan">Met <b>één</b> P. Zondag (meestal) open.</p>
+    </div>
+  </div>
+  <div class="streep"></div>
   <main class="kaart"><div id="links"></div><div id="rechts"></div></main>
   <div class="voet">
     <div class="verhaal">
       <h3>Een woordje van de cafébazen</h3>
       <p id="verhaal"></p>
-      <p class="adres">@CHIROPOPOV · <span id="adres"></span></p>
+      <p class="adres" id="adres"></p>
     </div>
-    <div class="qr"><img src="qr.svg" alt="QR-code naar de online drankenkaart"><p>SCAN &amp; BESTEL</p></div>
+    <div class="qr"><div class="vak"><img src="qr.svg" alt="QR-code naar de online drankenkaart"></div><p>Scan &amp; tap</p></div>
   </div>
 </div>
 <script src="menu.js"></script>
 <script>
-  var M = window.VOPOP, kol = { links: "", rechts: "" };
-  var links = ["vat", "dag", "pils", "wit", "blond"];
+  var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["vat", "dag", "pils", "wit", "blond"];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   M.rubrieken.forEach(function (r) {
-    var h = "<section><h2>" + esc(r.naam) + "</h2>";
+    var h = '<section><div class="rub"><span class="tegel"><svg viewBox="0 0 24 24">' + M.iconen[r.id] + '</svg></span><h2 class="bord">' + esc(r.naam) + "</h2></div>";
     r.bieren.forEach(function (b) {
-      h += '<div class="bier"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
-           '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>";
+      h += '<div class="bier"><div class="lijn"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
+           '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div></div>";
     });
     kol[links.indexOf(r.id) >= 0 ? "links" : "rechts"] += h + "</section>";
   });
   document.getElementById("links").innerHTML = kol.links;
   document.getElementById("rechts").innerHTML = kol.rechts;
   document.getElementById("verhaal").textContent = M.verhaal;
-  document.getElementById("adres").textContent = M.adres.toUpperCase();
+  document.getElementById("adres").textContent = M.adres;
 </script>
 </body>
 </html>

@@ -1,0 +1,48 @@
+/* Brouwerij Vopop: gedeelde stijl voor web en print */
+@font-face { font-family: "Anton"; font-weight: 400; font-display: swap; src: url("fonts/anton-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("fonts/barlow-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/barlow-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("fonts/barlow-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 500; font-display: swap; src: url("fonts/barlow-condensed-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
+
+:root {
+  --wit: #FFFFFF;
+  --navy: #00124D;      /* Chiro PMS 282 */
+  --rood: #E1143C;      /* Chiro PMS 186 */
+  --rood-donker: #A50D2C;
+  --schuim: #E4D096;    /* Chiro PMS 467 */
+  --lijn: rgba(0, 18, 77, .18);
+  --display: "Anton", "Impact", sans-serif;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --tekst: "Barlow", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Uithangbord: dikke letters met harde marineblauwe schaduw */
+.bord {
+  font-family: var(--display); font-weight: 400; color: var(--rood); text-transform: uppercase;
+  letter-spacing: .01em; line-height: .86; margin: 0;
+  text-shadow: .045em .045em 0 var(--navy);
+}
+
+/* Icoontegel per rubriek */
+.tegel { display: inline-grid; place-items: center; background: var(--rood); flex: none; }
+.tegel svg { width: 64%; height: 64%; fill: var(--wit); display: block; }
+
+/* Lint met gezwaluwstaarte uiteinden */
+.lint { position: relative; display: inline-block; }
+.lint > span {
+  position: relative; z-index: 1; display: block; background: var(--navy); color: var(--wit);
+  font-family: var(--cond); font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+}
+.lint::before, .lint::after { content: ""; position: absolute; top: 22%; width: 1.9em; height: 100%; background: var(--rood); z-index: 0; }
+.lint::before { left: -1.25em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .55em 50%); }
+.lint::after { right: -1.25em; clip-path: polygon(0 0, 100% 0, calc(100% - .55em) 50%, 100% 100%, 0 100%); }
+
+/* Kaartregel: naam, stippellijn, prijs */
+.lijn { display: flex; align-items: baseline; gap: .4em; }
+.punten { flex: 1; min-width: .8em; border-bottom: .14em dotted rgba(0,18,77,.45); transform: translateY(-.28em); }
+.naam { font-family: var(--cond); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; color: var(--navy); }
+.prijs { font-family: var(--cond); font-weight: 700; color: var(--rood); white-space: nowrap; }
+.prijs.raar { color: var(--navy); }
