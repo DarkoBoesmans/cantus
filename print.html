@@ -9,55 +9,40 @@
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
   html, body { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { background: #ccc; font-family: var(--tekst); color: var(--navy); }
-  .blad { width: 210mm; height: 297mm; margin: 0 auto; background: var(--wit); position: relative; overflow: hidden; padding: 11mm 14mm 0; }
+  body { background: #bbb; color: var(--navy); }
+  .blad { width: 210mm; height: 297mm; margin: 0 auto; background: var(--papier); position: relative; overflow: hidden; padding: 13mm 16mm 0; }
+  .kader { position: absolute; inset: 6mm; border: 1.4mm solid var(--navy); pointer-events: none; }
+  .kader::after { content: ""; position: absolute; inset: 1.2mm; border: .3mm solid var(--navy); }
 
-  .top { display: flex; justify-content: space-between; font-family: var(--cond); font-weight: 600; font-size: 9pt; letter-spacing: .12em; text-transform: uppercase; }
-  .kop { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6mm; margin-top: 4mm; }
-  .voor { font-family: var(--cond); font-weight: 700; font-size: 15pt; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 1.5mm; }
-  h1.bord { font-size: 96pt; margin-left: -.6mm; }
-  .rechts { padding-bottom: 3mm; text-align: right; }
-  .rechts .lint { font-size: 12pt; margin-right: 9mm; }
-  .rechts .lint > span { padding: 2.2mm 6mm 2mm; }
-  .slogan { font-family: var(--cond); font-weight: 600; font-size: 13pt; margin: 5mm 0 0; }
-  .slogan b { color: var(--rood); }
-  .streep { height: .8mm; background: var(--navy); margin-top: 4mm; }
+  .uithang { font-size: 13pt; }
+  .kaart { display: grid; grid-template-columns: 1fr 1fr; column-gap: 10mm; margin-top: 4mm; font-size: 11pt; align-items: start; }
+  .rubriek { margin-bottom: 3.2mm; }
+  .rubriek h2 { margin-bottom: .8mm; }
+  .bier { padding: .25mm 0; }
+  .bier .prijs { font-size: 10.6pt; }
 
-  .kaart { display: grid; grid-template-columns: 1fr 1fr; column-gap: 9mm; margin-top: 5mm; align-items: start; }
-  section { margin-bottom: 3.6mm; }
-  .rub { display: flex; align-items: center; gap: 2.2mm; padding-bottom: 1.2mm; border-bottom: .5mm solid var(--navy); margin-bottom: .6mm; }
-  .rub .tegel { width: 7mm; height: 7mm; }
-  .rub h2 { font-size: 17pt; }
-  .bier { padding: .5mm 0; }
-  .bier .naam { font-size: 12pt; }
-  .bier .prijs { font-size: 12pt; }
-  .bier .lied { font-size: 8.5pt; color: rgba(0,18,77,.7); margin-top: -.6mm; }
-
-  .voet { position: absolute; left: 14mm; right: 14mm; bottom: 11mm; display: flex; gap: 5mm; align-items: stretch; }
-  .verhaal { flex: 1; background: var(--schuim); padding: 4mm 5mm; }
-  .verhaal h3 { font-family: var(--cond); font-weight: 700; font-size: 12pt; text-transform: uppercase; letter-spacing: .04em; margin: 0 0 1mm; }
-  .verhaal p { margin: 0; font-size: 9.6pt; line-height: 1.4; }
-  .verhaal .adres { font-family: var(--cond); font-weight: 600; letter-spacing: .1em; font-size: 8.5pt; text-transform: uppercase; margin-top: 2mm; }
-  .qr { width: 36mm; background: var(--navy); color: #fff; text-align: center; padding: 3mm 3mm 2.2mm; }
-  .qr .vak { background: #fff; padding: 1.6mm; }
+  .voet { position: absolute; left: 16mm; right: 16mm; bottom: 12mm; display: flex; gap: 6mm; align-items: stretch; font-size: 10pt; }
+  .verhaal { flex: 1; padding: 3.5mm 4.5mm; }
+  .verhaal h3 { font-size: 11.5pt; }
+  .verhaal p { font-size: 9.6pt; line-height: 1.38; }
+  .verhaal .adres { font-family: var(--caps); font-style: normal; font-weight: 600; font-size: 8.5pt; letter-spacing: .12em; margin-top: 2mm; }
+  .qr { width: 35mm; background: var(--navy); color: #fff; text-align: center; padding: 3mm 3mm 2mm; }
+  .qr .vak { background: var(--papier); padding: 1.6mm; }
   .qr img { width: 100%; display: block; }
-  .qr p { font-family: var(--cond); font-weight: 700; font-size: 11pt; letter-spacing: .08em; margin: 1.8mm 0 0; text-transform: uppercase; }
+  .qr p { font-family: var(--slab); font-weight: 700; font-size: 9.5pt; letter-spacing: .1em; margin: 1.8mm 0 0; }
 </style>
 </head>
 <body>
 <div class="blad">
-  <div class="top"><span>Café &amp; brouwerij, Gijzegem</span><span>@chiropopov</span></div>
-  <div class="kop">
-    <div>
-      <p class="voor">Brouwerij</p>
-      <h1 class="bord">Vopop</h1>
-    </div>
-    <div class="rechts">
-      <div class="lint"><span>Drankenkaart</span></div>
-      <p class="slogan">Met <b>één</b> P. Zondag (meestal) open.</p>
-    </div>
-  </div>
-  <div class="streep"></div>
+  <div class="kader"></div>
+  <header class="uithang">
+    <p class="klein">CAFÉ &amp; BROUWERIJ · GIJZEGEM</p>
+    <p class="brouwerij">Brouwerij</p>
+    <h1 class="vopop">VOPOP</h1>
+    <div class="lint"><span>DRANKENKAART</span></div>
+    <div class="onder"><span class="open">ZONDAG (MEESTAL) OPEN</span><span class="slogan">met één P</span><span></span></div>
+    <div class="dubbel"></div>
+  </header>
   <main class="kaart"><div id="links"></div><div id="rechts"></div></main>
   <div class="voet">
     <div class="verhaal">
@@ -65,25 +50,27 @@
       <p id="verhaal"></p>
       <p class="adres" id="adres"></p>
     </div>
-    <div class="qr"><div class="vak"><img src="qr.svg" alt="QR-code naar de online drankenkaart"></div><p>Scan &amp; tap</p></div>
+    <div class="qr"><div class="vak"><img src="qr.svg" alt="QR-code naar de online drankenkaart"></div><p>SCAN &amp; TAP</p></div>
   </div>
 </div>
 <script src="menu.js"></script>
 <script>
-  var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["vat", "dag", "pils", "wit", "blond"];
+  var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["dag", "vat", "pils", "wit", "blond"], rechts = ["fruit", "sterk", "trappist", "donker", "muts"];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
-  M.rubrieken.forEach(function (r) {
-    var h = '<section><div class="rub"><span class="tegel"><svg viewBox="0 0 24 24">' + M.iconen[r.id] + '</svg></span><h2 class="bord">' + esc(r.naam) + "</h2></div>";
+  var volgorde = links.concat(rechts);
+  volgorde.forEach(function (id) {
+    var r = M.rubrieken.filter(function (x) { return x.id === id; })[0];
+    var h = '<section class="rubriek"><h2>' + esc(r.naam) + "</h2>";
     r.bieren.forEach(function (b) {
-      h += '<div class="bier"><div class="lijn"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
-           '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div></div>";
+      h += '<div class="bier lijn"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
+           '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>";
     });
-    kol[links.indexOf(r.id) >= 0 ? "links" : "rechts"] += h + "</section>";
+    kol[links.indexOf(id) >= 0 ? "links" : "rechts"] += h + "</section>";
   });
   document.getElementById("links").innerHTML = kol.links;
   document.getElementById("rechts").innerHTML = kol.rechts;
   document.getElementById("verhaal").textContent = M.verhaal;
-  document.getElementById("adres").textContent = M.adres;
+  document.getElementById("adres").textContent = "@CHIROPOPOV · " + M.adres.toUpperCase();
 </script>
 </body>
 </html>

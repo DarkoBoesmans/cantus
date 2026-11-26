@@ -1,48 +1,54 @@
-/* Brouwerij Vopop: gedeelde stijl voor web en print */
-@font-face { font-family: "Anton"; font-weight: 400; font-display: swap; src: url("fonts/anton-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("fonts/barlow-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/barlow-latin-400-italic.woff2") format("woff2"); }
-@font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("fonts/barlow-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Barlow Condensed"; font-weight: 500; font-display: swap; src: url("fonts/barlow-condensed-latin-500-normal.woff2") format("woff2"); }
+/* Brouwerij Vopop: gedeelde stijl voor web en print (maten in em, basis zet elke pagina zelf) */
+@font-face { font-family: "Roboto Slab"; font-weight: 700; font-display: swap; src: url("fonts/roboto-slab-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "Roboto Slab"; font-weight: 900; font-display: swap; src: url("fonts/roboto-slab-latin-900-normal.woff2") format("woff2"); }
+@font-face { font-family: "EB Garamond"; font-weight: 600; font-display: swap; src: url("fonts/eb-garamond-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Gelasio"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/gelasio-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Gelasio"; font-weight: 700; font-style: italic; font-display: swap; src: url("fonts/gelasio-latin-700-italic.woff2") format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); }
 @font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); }
 
 :root {
-  --wit: #FFFFFF;
+  --papier: #F6EFDB;
   --navy: #00124D;      /* Chiro PMS 282 */
   --rood: #E1143C;      /* Chiro PMS 186 */
-  --rood-donker: #A50D2C;
-  --schuim: #E4D096;    /* Chiro PMS 467 */
-  --lijn: rgba(0, 18, 77, .18);
-  --display: "Anton", "Impact", sans-serif;
-  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
-  --tekst: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --rood-donker: #9E0E2A;
+  --beige: #E4D096;     /* Chiro PMS 467 */
+  --slab: "Roboto Slab", Georgia, serif;
+  --serif: "EB Garamond", Georgia, serif;
+  --cursief: "Gelasio", Georgia, serif;
+  --caps: "Barlow Condensed", "Bahnschrift", "Arial Narrow", sans-serif;
 }
 
-/* Uithangbord: dikke letters met harde marineblauwe schaduw */
-.bord {
-  font-family: var(--display); font-weight: 400; color: var(--rood); text-transform: uppercase;
-  letter-spacing: .01em; line-height: .86; margin: 0;
-  text-shadow: .045em .045em 0 var(--navy);
-}
-
-/* Icoontegel per rubriek */
-.tegel { display: inline-grid; place-items: center; background: var(--rood); flex: none; }
-.tegel svg { width: 64%; height: 64%; fill: var(--wit); display: block; }
-
-/* Lint met gezwaluwstaarte uiteinden */
-.lint { position: relative; display: inline-block; }
+/* Uithangbord */
+.uithang { text-align: center; color: var(--navy); }
+.uithang .klein { font-family: var(--caps); font-weight: 600; font-size: .62em; letter-spacing: .3em; color: var(--rood); margin: 0; }
+.uithang .brouwerij { font-family: var(--cursief); font-weight: 700; font-style: italic; color: var(--rood); font-size: 1.7em; line-height: 1; margin: .35em 0 0; }
+.uithang .vopop { font-family: var(--slab); font-weight: 900; font-size: 7em; line-height: .95; letter-spacing: .04em; margin: 0; padding-left: .04em; }
+.lint { position: relative; display: inline-block; margin-top: .3em; }
 .lint > span {
-  position: relative; z-index: 1; display: block; background: var(--navy); color: var(--wit);
-  font-family: var(--cond); font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
+  position: relative; z-index: 1; display: block; background: var(--rood); color: #fff;
+  font-family: var(--slab); font-weight: 700; font-size: 1em; letter-spacing: .14em; padding: .45em 1.6em .42em 1.74em;
 }
-.lint::before, .lint::after { content: ""; position: absolute; top: 22%; width: 1.9em; height: 100%; background: var(--rood); z-index: 0; }
-.lint::before { left: -1.25em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .55em 50%); }
-.lint::after { right: -1.25em; clip-path: polygon(0 0, 100% 0, calc(100% - .55em) 50%, 100% 100%, 0 100%); }
+.lint::before, .lint::after { content: ""; position: absolute; top: .3em; width: 2.6em; height: 100%; background: var(--rood-donker); }
+.lint::before { left: -1.9em; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, .7em 50%); }
+.lint::after { right: -1.9em; clip-path: polygon(0 0, 100% 0, calc(100% - .7em) 50%, 100% 100%, 0 100%); }
+.uithang .onder { display: grid; grid-template-columns: minmax(0,1fr) auto minmax(0,1fr); column-gap: .6em; align-items: baseline; margin-top: .55em; }
+.uithang .open { font-family: var(--caps); font-weight: 600; font-size: .62em; letter-spacing: .15em; text-align: left; }
+.uithang .slogan { font-family: var(--cursief); font-weight: 700; font-style: italic; color: var(--rood); font-size: 1.05em; }
+.dubbel { border-top: .2em solid var(--navy); border-bottom: .07em solid var(--navy); height: .45em; margin-top: .55em; }
 
-/* Kaartregel: naam, stippellijn, prijs */
-.lijn { display: flex; align-items: baseline; gap: .4em; }
-.punten { flex: 1; min-width: .8em; border-bottom: .14em dotted rgba(0,18,77,.45); transform: translateY(-.28em); }
-.naam { font-family: var(--cond); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; color: var(--navy); }
-.prijs { font-family: var(--cond); font-weight: 700; color: var(--rood); white-space: nowrap; }
-.prijs.raar { color: var(--navy); }
+/* Rubrieken en kaartregels */
+.rubriek h2 {
+  font-family: var(--slab); font-weight: 700; color: var(--rood); font-size: 1.07em; letter-spacing: .08em; text-transform: uppercase;
+  margin: 0; padding-bottom: .25em; border-bottom: .06em solid var(--navy);
+}
+.lijn { display: flex; align-items: baseline; gap: .35em; }
+.naam { font-family: var(--serif); font-weight: 600; color: var(--navy); }
+.punten { flex: 1; min-width: .8em; border-bottom: .16em dotted var(--navy); transform: translateY(-.25em); opacity: .8; }
+.prijs { font-family: var(--caps); font-weight: 600; color: var(--navy); white-space: nowrap; }
+.prijs.raar { color: var(--rood); }
+
+/* Woordje van de cafébazen */
+.verhaal { background: var(--beige); border: .07em solid var(--navy); color: var(--navy); text-align: left; }
+.verhaal h2, .verhaal h3 { font-family: var(--cursief); font-weight: 700; font-style: italic; color: var(--rood); margin: 0 0 .2em; }
+.verhaal p { font-family: var(--cursief); font-style: italic; margin: 0; }
