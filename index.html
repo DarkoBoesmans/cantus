@@ -102,7 +102,7 @@
   $("verhaal").textContent = M.verhaal;
   $("adres").textContent = "@chiropopov · " + M.adres;
 
-  var volgorde = ["dag", "vat", "pils", "wit", "blond", "fruit", "sterk", "trappist", "donker", "muts"];
+  var volgorde = M.kolommen.links.concat(M.kolommen.rechts);
   var nav = "", kaart = "";
   volgorde.forEach(function (rid) {
     var r = M.rubrieken.filter(function (x) { return x.id === rid; })[0]; if (!r) return;
@@ -111,7 +111,7 @@
     r.bieren.forEach(function (b) {
       kaart += '<article class="bier"><div class="lijn"><h3 class="naam">' + esc(b.bier) + '</h3><span class="punten" aria-hidden="true"></span>' +
         '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>" +
-        '<p class="uitleg">' + esc(b.uitleg) + "</p></article>";
+        (b.uitleg ? '<p class="uitleg">' + esc(b.uitleg) + "</p>" : "") + "</article>";
     });
     kaart += "</section>";
   });

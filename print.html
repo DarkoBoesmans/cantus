@@ -57,7 +57,7 @@
 <script>
   if (new URLSearchParams(location.search).get("qr") === "0") document.querySelector(".qr").remove();
   var titels = new URLSearchParams(location.search).get("titels") === "1";
-  var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["dag", "vat", "pils", "wit", "blond"], rechts = ["fruit", "sterk", "trappist", "donker", "muts"];
+  var M = window.VOPOP, kol = { links: "", rechts: "" }, links = M.kolommen.links, rechts = M.kolommen.rechts;
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   var volgorde = links.concat(rechts);
   volgorde.forEach(function (id) {
