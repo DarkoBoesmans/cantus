@@ -56,6 +56,7 @@
 <script src="menu.js"></script>
 <script>
   if (new URLSearchParams(location.search).get("qr") === "0") document.querySelector(".qr").remove();
+  var titels = new URLSearchParams(location.search).get("titels") === "1";
   var M = window.VOPOP, kol = { links: "", rechts: "" }, links = ["dag", "vat", "pils", "wit", "blond"], rechts = ["fruit", "sterk", "trappist", "donker", "muts"];
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   var volgorde = links.concat(rechts);
@@ -63,7 +64,7 @@
     var r = M.rubrieken.filter(function (x) { return x.id === id; })[0];
     var h = '<section class="rubriek"><h2>' + esc(r.naam) + "</h2>";
     r.bieren.forEach(function (b) {
-      h += '<div class="bier lijn"><span class="naam">' + esc(b.bier) + '</span><span class="punten"></span>' +
+      h += '<div class="bier lijn"><span class="naam">' + esc(titels ? b.lied : b.bier) + '</span><span class="punten"></span>' +
            '<span class="prijs' + (typeof b.prijs === "number" ? "" : " raar") + '">' + esc(M.prijsTekst(b.prijs)) + "</span></div>";
     });
     kol[links.indexOf(id) >= 0 ? "links" : "rechts"] += h + "</section>";
